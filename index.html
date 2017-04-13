@@ -1,0 +1,39 @@
+<html ng-app="app">
+  <head>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="node_modules/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-spinners/dist/angular-spinners.js"></script>
+    <script src="node_modules/spin/dist/spin.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/service/services.js"></script>
+    <script src="app/controller/controllers.js"></script>
+    <script src="app/controller/movieDetail.js"></script>
+    <script src="app/controller/nowPlayingCtrl.js"></script>
+    <script src="app/controller/topRatedCtrl.js"></script>
+    <script src="app/filter/filters.js"></script>
+    <script src="app/component/components.js"></script>
+
+
+  </head>
+
+  <body>
+    <ul>
+      <li >
+      <a href="#!/popular">Films populaires</a>
+      </li>
+      <li >
+      <a href="#!/nowPlaying">Films en cours de projection</a>
+      </li>
+      <li >
+      <a href="#!/topRated">Films les mieux notés</a>
+      </li>
+
+    </ul>
+
+    <div ng-view> </div>
+
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<div>
+
+    <div>
+      <div>
+        <h2 >Rechercher un film</h3>
+        <form role="form">
+            <div>
+                <input ng-model="$ctrl.query" type="text" placeholder="Rechercher film">
+            <span>
+              <button type="submit" type="button" ng-click="$ctrl.searchAction()"> Rechercher </button>
+            </span>
+            </div>
+        </form>
+      </div>
+  </div>
+
+
+  <h1>films populaires </h1>
+
+  <div ng-hide="$ctrl.currentMovie">
+
+    <div ng-show="$ctrl.movies.length > 1">
+        <button type="button" ng-click="$ctrl.clickPredicateName()"> Trier par nom </button>
+        <button type="button" ng-click="$ctrl.clickPredicateRate()"> Trier par note </button>
+
+    </div>
+
+    <ul >
+        <li ng-repeat="movie in $ctrl.movies | orderBy: $ctrl.orderByPredicate : $ctrl.orderByReverse">
+            <movie-component movie="movie" context="$ctrl"> </movie-component>
+        </li>
+    </ul>
+  </div>
+
+  <div>
+    <p>
+      <button ng-click="$ctrl.firstPage()" ng-disabled="$ctrl.currentPage==1"> << </button>
+      <button ng-click="$ctrl.previousPage()" ng-disabled="$ctrl.currentPage==1"> precedent </button>
+      <button ng-click="$ctrl.nextPage()" ng-disabled="$ctrl.currentPage==$ctrl.totalPages"> suivant </button>
+      <button ng-click="$ctrl.lastPage()" ng-disabled="$ctrl.currentPage==$ctrl.totalPages"> >> </button>
+    </p>
+  </div>
+
+
+  <div ng-show="$ctrl.currentMovie">
+    <img ng-src="http://image.tmdb.org/t/p/w500{{ $ctrl.currentMovie.poster_path }}"></img>
+    <dl >
+      <dt>Synopsis</dt>
+      <dd>{{$ctrl.currentMovie.overview}}</dd>
+
+      <dt>Date</dt>
+      <dd>{{$ctrl.currentMovie.release_date | date: 'yyyy'}}</dd>
+    </dl>
+    <button ng-click="$ctrl.hideDetails(movie)"> fermer </button>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div >
+    <a ng-href="#/info/{{$ctrl.movie.id}}"><h4 ng-bind="$ctrl.movie.title"></h4></a>
+    <div>
+        <img ng-src="http://image.tmdb.org/t/p/w500{{$ctrl.movie.poster_path}}" width="200" height="300"/>
+    </div>
+    <div>
+        <label>Année:</label><span ng-bind="$ctrl.movie.release_date | date:'yyyy'"></span><br/>
+        <label>Note:</label> {{$ctrl.movie.vote_average | rating }} (<span ng-bind="$ctrl.movie.vote_count"></span> avis)<br/>
+        <a href="#!/movie/details/{{$ctrl.movie.id}}">  <button> Details </button>  </a>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div ng-controller="nowPlayingCtrl as $ctrl">
+
+    <div>
+      <div>
+        <h2 >Rechercher un film</h3>
+        <form role="form">
+            <div>
+                <input ng-model="$ctrl.query" type="text" placeholder="Rechercher film">
+            <span>
+              <button type="submit" type="button" ng-click="$ctrl.searchAction()"> Rechercher </button>
+            </span>
+            </div>
+        </form>
+      </div>
+  </div>
+
+
+  <h1>films en cours de projection </h1>
+
+  <div ng-hide="$ctrl.currentMovie">
+
+    <ul >
+        <li ng-repeat="movie in $ctrl.movies">
+            <div >
+                <a ng-href="#/info/{{movie.id}}"><h4 ng-bind="movie.title"></h4></a>
+                <div>
+                    <img ng-src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}" width="200" height="300"/>
+                </div>
+                <div>
+                    <label>Année:</label><span ng-bind="movie.release_date | date:'yyyy'"></span><br/>
+                    <label>Note:</label><rating ng-model="movie.vote_average" max="10" readonly="true"></rating>(<span ng-bind="movie.vote_count"></span> avis)<br/>
+                    <button ng-click="$ctrl.showDetails(movie)"> Details </button>
+                </div>
+            </div>
+        </li>
+    </ul>
+  </div>
+
+  <div>
+    <p>
+      <button ng-click="$ctrl.firstPage()" ng-disabled="$ctrl.currentPage==1"> << </button>
+      <button ng-click="$ctrl.previousPage()" ng-disabled="$ctrl.currentPage==1"> precedent </button>
+      <button ng-click="$ctrl.nextPage()" ng-disabled="$ctrl.currentPage==$ctrl.totalPages"> suivant </button>
+      <button ng-click="$ctrl.lastPage()" ng-disabled="$ctrl.currentPage==$ctrl.totalPages"> >> </button>
+    </p>
+  </div>
+
+
+  <div ng-show="$ctrl.currentMovie">
+    <img ng-src="http://image.tmdb.org/t/p/w500{{ $ctrl.currentMovie.poster_path }}"></img>
+    <dl >
+      <dt>Synopsis</dt>
+      <dd>{{$ctrl.currentMovie.overview}}</dd>
+
+      <dt>Date</dt>
+      <dd>{{$ctrl.currentMovie.release_date | date: 'yyyy'}}</dd>
+    </dl>
+    <button ng-click="$ctrl.hideDetails(movie)"> fermer </button>
+  </div>
+
+</div>

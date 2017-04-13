@@ -1,0 +1,10 @@
+<div>
+  <img ng-src="http://image.tmdb.org/t/p/w500{{ $ctrl.currentMovie.poster_path }}"></img>
+  <dl >
+    <dt>Synopsis</dt>
+    <dd>{{$ctrl.currentMovie.overview}}</dd>
+
+    <dt>Date</dt>
+    <dd>{{$ctrl.currentMovie.release_date | date: 'yyyy'}}</dd>
+  </dl>
+</div>
